@@ -1,11 +1,11 @@
 "use client";
 import { login } from "@/lib/actions/auth";
 import Form from "next/form";
-import { useActionState, useEffect } from "react";
 import Input from "../ui/input";
+import { toast } from "react-toastify";
+import { useActionState, useEffect } from "react";
 import InputPassword from "../ui/input-password";
 import SubmitForm from "../ui/submit-form";
-import { toast } from "react-toastify";
 
 export default function SigninForm() {
   const [state, formAction, isPending] = useActionState(login, {
@@ -22,6 +22,7 @@ export default function SigninForm() {
       toast.error(state.message);
     }
   }, [state]);
+
   return (
     <div className="flex flex-col gap-4">
       {isPending && (

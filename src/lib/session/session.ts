@@ -33,6 +33,7 @@ export const createSession = async (payload: UserPayload) => {
   const cookieStore = await cookies();
 
   const isSecure = process.env.NODE_ENV === "production";
+
   cookieStore.set("session", session, {
     httpOnly: true,
     secure: isSecure,

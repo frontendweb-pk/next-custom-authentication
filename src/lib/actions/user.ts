@@ -1,6 +1,6 @@
 "use server";
 
-import { getSession } from "../auth/dal";
+import { getSession } from "../session/dal";
 import { sleep } from "../helpers/sleep";
 import { User } from "../models";
 

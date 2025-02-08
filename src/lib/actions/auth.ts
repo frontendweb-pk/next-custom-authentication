@@ -4,7 +4,7 @@ import { z } from "zod";
 import { User } from "../models/user";
 import { Password } from "../password";
 import { ValidationError } from "sequelize";
-import { createSession, deleteSession } from "../auth/session";
+import { createSession, deleteSession } from "../session/session";
 import { Role } from "../models";
 import { redirect } from "next/navigation";
 

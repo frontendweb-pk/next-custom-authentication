@@ -7,11 +7,16 @@ import { redirect } from "next/navigation";
 
 export const getSession = cache(async () => {
   const cookie = (await cookies()).get("session")?.value;
-  const session = await decrypt(cookie!);
+  try {
+    const session = await decrypt(cookie!);
 
-  if (!session?.user_id) {
+    if (!session?.user_id) {
+      redirect("/login");
+    }
+
+    return { isAuth: true, user_id: session.user_id, role: session.role };
+  } catch (error) {
+    console.error("Session Error", error);
     redirect("/login");
   }
-
-  return { isAuth: true, user_id: session.user_id, role: session.role };
 });
